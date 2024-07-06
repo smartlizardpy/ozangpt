@@ -1,7 +1,5 @@
 streamlit
 requests
 gradio_client
-json
 PIL
 io
-random
