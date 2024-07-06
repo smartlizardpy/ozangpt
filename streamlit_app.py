@@ -5,7 +5,7 @@ from io import BytesIO
 from gradio_client import Client
 import json
 
-def generate(outline, characters, settings, status):
+def generate(outline, characters, settings):
     prompt = f"Hello! I would like to request a 4-paragraph and 700 word per parapaph {status}story and a cover image prompt for sd3 with the following detailed outline:\n\n{outline}\n\nCharacters: {characters}\n\nSettings: {settings}\n\nPlease generate the story with the following detailed json format : p1, p2, p3, p4: Keys for story paragraphs; title: Key for story title; prompt: Key for cover image description.. Please do not include any other text in the output. Thank You but just the json is needed or it will break the whole system please thank you\n\n"
 
     client = Client("Be-Bo/llama-3-chatbot_70b")
