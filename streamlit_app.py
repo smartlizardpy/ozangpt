@@ -59,7 +59,7 @@ settings = st.text_area(label="Setting")
 
 if st.button(label="Generate"):
     with st.spinner('Generating story and cover image...'):
-        hikaye = generate(outline, characters, settings, )
+        hikaye = generate(outline, characters, settings )
         print("Debug: Story generation response:", hikaye)
         
         if hikaye:
