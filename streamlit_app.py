@@ -67,7 +67,7 @@ if st.button(label="Generate"):
                 hikaye_json = json.loads(hikaye)
             except json.JSONDecodeError as e:
                 st.error(f"Failed to parse JSON response: {e}")
-                st.error(f"Failed to parse JSON response. Full response: {hikaye}")
+                st.error(f"Failed to parse JSON response.{hikaye}")
                 st.stop()
 
             title, p1, p2, p3, p4, prmt = parse_story_response(hikaye_json)
