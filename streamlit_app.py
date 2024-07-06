@@ -5,8 +5,8 @@ from io import BytesIO
 from gradio_client import Client
 import json
 
-def generate(outline, characters, settings):
-    prompt = f"Hello! I would like to request a 4-paragraph and 700 word per parapaph {status}story and a cover image prompt for sd3 with the following detailed outline:\n\n{outline}\n\nCharacters: {characters}\n\nSettings: {settings}\n\nPlease generate the story with the following detailed json format : p1, p2, p3, p4: Keys for story paragraphs; title: Key for story title; prompt: Key for cover image description.. Please do not include any other text in the output. Thank You but just the json is needed or it will break the whole system please thank you\n\n"
+def generate(outline, characters, settings ):
+    prompt = f"Hello! I would like to request a 4-paragraph and 700 word per parapaph story and a cover image prompt for sd3 with the following detailed outline:\n\n{outline}\n\nCharacters: {characters}\n\nSettings: {settings}\n\nPlease generate the story with the following detailed json format : p1, p2, p3, p4: Keys for story paragraphs; title: Key for story title; prompt: Key for cover image description.. Please do not include any other text in the output. Thank You but just the json is needed or it will break the whole system and make us lose 10 millon dollars. please dont say 'Full response: Here is the requested output in JSON format:' or here is the full response only json thank you\n\n"
 
     client = Client("Be-Bo/llama-3-chatbot_70b")
     hikaye = client.predict(
@@ -20,7 +20,7 @@ def generate(outline, characters, settings):
     return hikaye
 
 def cover(prompt):
-    api_key = "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"
+    api_key = st.secrets(['apikey'])
     model = "mann-e/Mann-E_Turbo"
     headers = {"Authorization": f"Bearer {api_key}"}
     api_url = f"https://api-inference.huggingface.co/models/{model}"
@@ -59,7 +59,7 @@ settings = st.text_area(label="Setting")
 
 if st.button(label="Generate"):
     with st.spinner('Generating story and cover image...'):
-        hikaye = generate(outline, characters, settings )
+        hikaye = generate(outline, characters, settings, )
         print("Debug: Story generation response:", hikaye)
         
         if hikaye:
