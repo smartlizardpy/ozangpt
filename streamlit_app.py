@@ -20,7 +20,7 @@ def generate(outline, characters, settings ):
     return hikaye
 
 def cover(prompt):
-    api_key = st.secrets['apikey'])
+    api_key = st.secrets["apikey"]["apikey"]
     model = "mann-e/Mann-E_Turbo"
     headers = {"Authorization": f"Bearer {api_key}"}
     api_url = f"https://api-inference.huggingface.co/models/{model}"
