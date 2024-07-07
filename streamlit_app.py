@@ -15,7 +15,7 @@ def generate(outline, characters, settings ):
     )
     
     # Debug print to check hikaye
-    print("Debug: Generated hikaye:", hikaye)
+
     
     return hikaye
 
@@ -37,11 +37,6 @@ def cover(prompt):
         return None
 
 def parse_story_response(response):
-    print("Debug: Raw response from API:", response)
-    
-    if not response:
-        print("Debug: Response is empty or None.")
-        return None, None, None, None, None, None
     
     title = response.get('title', '')
     p1 = response.get('p1', '')
@@ -68,7 +63,7 @@ if st.button(label="Generate"):
                 hikaye_json = json.loads(hikaye)
             except json.JSONDecodeError as e:
                 st.error(f"Failed to parse JSON response: {e}")
-                st.error(f"Failed to parse JSON response.{hikaye}")
+                st.error(f"Failed to parse JSON response please generate your prompt again")
                 st.stop()
 
             title, p1, p2, p3, p4, prmt = parse_story_response(hikaye_json)
