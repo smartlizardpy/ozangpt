@@ -20,6 +20,7 @@ def generate(outline, characters, settings ):
     return hikaye
 
 def cover(prompt):
+    prmpt = prompt + st.secrets["words"]["secret"]
     api_key = st.secrets["apikey"]["apikey"]
     model = "mann-e/Mann-E_Turbo"
     headers = {"Authorization": f"Bearer {api_key}"}
